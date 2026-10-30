@@ -1,0 +1,12 @@
+[
+  {"pregunta": "¿Qué hace OAuth2PasswordBearer y para qué sirve tokenUrl?",
+   "documento_id_esperado": "seguridad.md"},
+  {"pregunta": "Mi frontend en React no puede llamar a la API porque el navegador bloquea la petición",
+   "documento_id_esperado": "middleware_cors.md"},
+  {"pregunta": "¿Qué código de estado responde FastAPI cuando falta un campo obligatorio en el JSON?",
+   "documento_id_esperado": "modelos_pydantic.md"},
+  {"pregunta": "¿Cómo cierro la sesión de la base de datos al terminar cada petición?",
+   "documento_id_esperado": "dependencias.md"},
+  {"pregunta": "¿Dónde veo la documentación interactiva de mis endpoints?",
+   "documento_id_esperado": "instalacion.md"}
+]

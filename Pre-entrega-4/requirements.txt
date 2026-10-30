@@ -1,0 +1,10 @@
+pinecone
+langchain-pinecone
+langchain-huggingface
+langchain-text-splitters
+langchain-community
+langchain-classic
+rank_bm25
+sentence-transformers
+tiktoken
+python-dotenv
