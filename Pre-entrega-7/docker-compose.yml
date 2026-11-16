@@ -1,0 +1,22 @@
+services:
+  redis:
+    image: redis:8            # Redis 8 incluye los módulos JSON y Search que usa RedisSaver
+    ports:
+      - "6379:6379"
+
+  phoenix:
+    image: arizephoenix/phoenix:latest
+    ports:
+      - "6006:6006"           # interfaz web y colector de trazas
+
+  api:
+    build: .
+    env_file: .env
+    environment:
+      REDIS_URL: redis://redis:6379
+      PHOENIX_COLLECTOR_ENDPOINT: http://phoenix:6006/v1/traces
+    ports:
+      - "8000:8000"
+    depends_on:
+      - redis
+      - phoenix

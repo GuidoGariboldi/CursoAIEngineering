@@ -1,0 +1,11 @@
+fastapi
+uvicorn[standard]
+httpx
+redis
+langgraph
+langgraph-checkpoint-redis
+langchain-core
+langchain-google-genai
+arize-phoenix-otel
+openinference-instrumentation-langchain
+python-dotenv
