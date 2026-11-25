@@ -1,0 +1,36 @@
+services:
+  redis:
+    image: redis:8                  # incluye los módulos JSON y Search que usa el checkpointer
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data            # trabajos, reservas y conversaciones sobreviven a un reinicio
+
+  phoenix:
+    image: arizephoenix/phoenix:latest
+    ports:
+      - "6006:6006"
+    volumes:
+      - phoenix-data:/root/.phoenix
+
+  api:
+    build: .
+    env_file: .env
+    environment:
+      REDIS_URL: redis://redis:6379
+      PHOENIX_COLLECTOR_ENDPOINT: http://phoenix:6006/v1/traces
+      CHROMA_DIR: /data/vectorstore
+    ports:
+      - "8000:8000"
+    volumes:
+      - chroma-data:/data           # base vectorial (la ingesta se hace una sola vez)
+      - hf-cache:/root/.cache/huggingface
+    depends_on:
+      - redis
+      - phoenix
+
+volumes:
+  redis-data:
+  phoenix-data:
+  chroma-data:
+  hf-cache:
